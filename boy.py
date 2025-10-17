@@ -94,20 +94,36 @@ class Idle:
 class AutoRun:
     def __inint__(self, boy):
         self.boy = boy(self)
-
-        pass
+        self.speed = 12
+        self.scale = 140
 
     def enter(self, e):
-        pass
+        self.boy.dir = -1
+        self.boy.face_dir = -1
+        self.start_time = get_time()
 
     def exit(self, e):
         pass
 
     def do(self):
-        pass
+        self.boy.frame = (self.boy.frame + 1) % 8
+        self.boy.x += self.boy.dir * self.speed
+        # 좌 우끝에서 방향전환
+        if self.boy.x < 50:
+            self.boy.dir = self.boy.face_dir = 1
+        elif self.boy.x > 750:
+            self.boy.x = 750
+            self.boy.dir = self.boy.face_dir = -1
+            # 5초 경과 시 TIME_OUT 발생
+        if get_time() - self.start_time > 5.0:
+            self.boy.state_machine.handle_state_event(('TIME_OUT', None))
 
     def draw(self):
-        pass
+        row = 100 if self.boy.face_dir == 1 else 0
+        self.boy.image.clip_composite_draw(
+            self.boy.frame * 100, row, 100, 100,
+            0, '', self.boy.x, self.boy.y, self.scale, self.scale
+        )
 
     def draw(self):
         pass
