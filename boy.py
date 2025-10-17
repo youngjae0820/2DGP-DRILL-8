@@ -94,6 +94,7 @@ class Idle:
 class AutoRun:
     def __inint__(self, boy):
         self.boy = boy(self)
+
         pass
 
     def enter(self, e):
@@ -130,7 +131,7 @@ class Boy:
                 self.SLEEP : {space_down: self.IDLE},
                 self.IDLE : {left_up: self.RUN, right_up: self.RUN, left_down: self.RUN, right_down: self.RUN, time_out : self.SLEEP},
                 self.RUN : {right_down: self.IDLE, left_up: self.IDLE,left_down: self.IDLE, right_up: self.IDLE},
-                self.AUTORUN: {}
+                self.AUTORUN: {right_down: self.RUN, left_down: self.RUN}
             }
         )
 
