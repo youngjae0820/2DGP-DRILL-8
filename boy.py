@@ -91,6 +91,25 @@ class Idle:
         else: # face_dir == -1: # left
             self.boy.image.clip_draw(self.boy.frame * 100, 200, 100, 100, self.boy.x, self.boy.y)
 
+class AutoRun:
+    def __inint__(self, boy):
+        self.AUTORUN = AutoRun(self)
+        pass
+
+    def enter(self, e):
+        pass
+
+    def exit(self, e):
+        pass
+
+    def do(self):
+        pass
+
+    def draw(self):
+        pass
+
+    def draw(self):
+        pass
 
 class Boy:
     def __init__(self):
