@@ -92,8 +92,8 @@ class Idle:
             self.boy.image.clip_draw(self.boy.frame * 100, 200, 100, 100, self.boy.x, self.boy.y)
 
 class AutoRun:
-    def __inint__(self, boy):
-        self.boy = boy(self)
+    def __init__(self, boy):
+        self.boy = boy
         self.speed = 12
         self.scale = 140
 
@@ -110,6 +110,7 @@ class AutoRun:
         self.boy.x += self.boy.dir * self.speed
         # 좌 우끝에서 방향전환
         if self.boy.x < 50:
+            self.boy.x = 50
             self.boy.dir = self.boy.face_dir = 1
         elif self.boy.x > 750:
             self.boy.x = 750
