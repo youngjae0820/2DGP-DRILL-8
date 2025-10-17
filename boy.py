@@ -13,6 +13,8 @@ def right_up(e): #e가 오른쪽 key input인가를 확인
     return e[0] == 'INPUT' and e[1].type == SDL_KEYUP and e[1].key == SDLK_RIGHT
 def left_up(e): #e가 왼쪽 key input인가를 확인
     return e[0] == 'INPUT' and e[1].type == SDL_KEYUP and e[1].key == SDLK_LEFT
+def a_down(e):
+    pass
 
 def time_out(e): #e가 시간초과 이벤트인가를 확인
     return e[0] == 'TIME_OUT'
@@ -80,7 +82,7 @@ class Idle:
     def do(self):
         self.boy.frame = (self.boy.frame + 1) % 8
         #2초가 경과하면 TIME_OUT 이벤트 발생
-        if get_time() - self.boy.wait_start_time > 1000000.0:
+        if get_time() - self.boy.wait_start_time > 2.0:
             self.boy.state_machine.handle_state_event(('TIME_OUT', 0))
 
     def draw(self):
