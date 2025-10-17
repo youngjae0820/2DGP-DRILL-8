@@ -122,12 +122,8 @@ class AutoRun:
     def draw(self):
         row = 100 if self.boy.face_dir == 1 else 0
         self.boy.image.clip_composite_draw(
-            self.boy.frame * 100, row, 100, 100,
-            0, '', self.boy.x, self.boy.y, self.scale, self.scale
+            self.boy.frame * 100, row, 100, 100, 0, '', self.boy.x, self.boy.y, self.scale, self.scale
         )
-
-    def draw(self):
-        pass
 
 class Boy:
     def __init__(self):
@@ -146,7 +142,7 @@ class Boy:
             self.IDLE, #초기상태
             {
                 self.SLEEP : {space_down: self.IDLE},
-                self.IDLE : {left_up: self.RUN, right_up: self.RUN, left_down: self.RUN, right_down: self.RUN, time_out : self.SLEEP},
+                self.IDLE : {left_up: self.RUN, right_up: self.RUN, left_down: self.RUN, right_down: self.RUN, time_out : self.SLEEP, a_down: self.AUTORUN},
                 self.RUN : {right_down: self.IDLE, left_up: self.IDLE,left_down: self.IDLE, right_up: self.IDLE},
                 self.AUTORUN: {time_out: self.IDLE, right_down: self.RUN, left_down: self.RUN}
             }
