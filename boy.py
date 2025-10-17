@@ -79,6 +79,7 @@ class Idle:
     def exit(self,e):
         pass
 
+
     def do(self):
         self.boy.frame = (self.boy.frame + 1) % 8
         #2초가 경과하면 TIME_OUT 이벤트 발생
